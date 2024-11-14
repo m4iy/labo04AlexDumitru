@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity_Commander">
+    android:padding="16dp">
 
+    <!-- Champ Texte Statique pour "Commande pour :" -->
+    <TextView
+        android:id="@+id/tv_commande_pour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Commande pour :"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- Champ Texte pour afficher le Nom du Client -->
+    <TextView
+        android:id="@+id/tv_nom_client"
+        android:layout_width="380dp"
+        android:layout_height="55dp"
+        android:textSize="16sp" />
+
+    <!-- Champ Texte pour afficher le Numéro de Téléphone du Client -->
+    <TextView
+        android:id="@+id/tv_telephone_client"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:textSize="16sp" />
+
+    <!-- Conteneur de Fragment pour la Liste des Repas -->
+    <FrameLayout
+        android:id="@+id/conteneur_fragment_liste_repas"
+        android:layout_width="384dp"
+        android:layout_height="215dp" />
+
+    <!-- Conteneur de Fragment pour les Détails du Repas -->
+    <FrameLayout
+        android:id="@+id/conteneur_fragment_details_repas"
+        android:layout_width="379dp"
+        android:layout_height="191dp" />
+
+    <!-- Bouton pour Commander le Repas Sélectionné -->
+    <Button
+        android:id="@+id/btn_commander_repas"
+        android:layout_width="376dp"
+        android:layout_height="70dp"
+        android:text="Commander le repas sélectionné" />
 </LinearLayout>

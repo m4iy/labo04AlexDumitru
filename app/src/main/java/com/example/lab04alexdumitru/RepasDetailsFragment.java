@@ -1,64 +1,45 @@
 package com.example.lab04alexdumitru;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RepasDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RepasDetailsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView categorieTextView;
+    private TextView descriptionTextView;
+    private TextView prixTextView;
 
     public RepasDetailsFragment() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RepasDetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RepasDetailsFragment newInstance(String param1, String param2) {
-        RepasDetailsFragment fragment = new RepasDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_repas_details, container, false);
+        // Inflater le layout pour ce fragment
+        View vue = inflater.inflate(R.layout.fragment_repas_details, container, false);
+
+        // Initialiser les TextView
+        categorieTextView = vue.findViewById(R.id.tv_categorie_repas);
+        descriptionTextView = vue.findViewById(R.id.tv_description_repas);
+        prixTextView = vue.findViewById(R.id.tv_prix_repas);
+
+        // Récupérer les arguments passés par RepasFragment
+        if (getArguments() != null) {
+            String categorie = getArguments().getString("categorie");
+            String description = getArguments().getString("description");
+            double prix = getArguments().getDouble("prix");
+
+            // Afficher les détails dans les TextView
+            categorieTextView.setText(categorie);
+            descriptionTextView.setText(description);
+            prixTextView.setText(String.format("$%.2f", prix));
+        }
+
+        return vue;
     }
 }
